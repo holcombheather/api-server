@@ -1,45 +1,44 @@
-# LAB - Class 03,04
+# package.json Notes
 
-## Project: api-server
+## For React Applications
 
-### Author: Heather Holcomb
+To deploy your application at GitHub pages, you'll need to add a home page property to your package.json which points to the deployed base URL of your GitHub Pages site.
 
-### Problem Domain  
+*NOTE: This will break deployments to other hosting services such as Netlify, Vercel, or AWS Amplify, so if you later wish to deploy there, remove this property completely.*
 
-Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a Postgres SQL Database, using the REST standard.
+```json
+{
+  "homepage": "https://yourname.github.io/repository-name"
+}
+```
 
-### Links and Resources
+## Node / Express Applications
 
-- [GitHub Actions ci/cd](https://github.com/rkgallaway/server-deployment-practice-d51/actions) 
-- [back-end server url](http://xyz.com) (when applicable)
-- [front-end application](http://xyz.com) (when applicable)
+### For Tests
 
-### Collaborators
+Your scripts section should have the following, so that you can easily run tests locally and in your CI.
 
-### Setup
+```json
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "init:config": "sequelize init:config",
+    "db:create": "sequelize db:create"
+},
+```
 
-#### `.env` requirements (where applicable)
+### For NPM Modules
 
-for now I have none and do not require one
+If you are creating a module to deploy at NPM, you'll want a "bin" section that identifies the name of the global command to run and your .js file that runs when called.
 
+```json
+"bin": {
+    "fetch": "index.js"
+}
+```
 
-#### How to initialize/run your application (where applicable)
+Additionally, that file should have as it's first line, so that it'll run without having to type "node filename.js" every time
 
-- e.g. `npm start`
-
-#### How to use your library (where applicable)
-
-#### Features / Routes
-
-- Feature One: Details of feature
-- GET : `/hello` - specific route to hit
-
-#### Tests
-
-- How do you run tests?
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
-
-#### UML
-
-Link to an image of the UML for your application and response to events
+`#!/usr/bin/env node`

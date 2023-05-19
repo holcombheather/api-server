@@ -17,4 +17,4 @@ indent_size = 2
 # Python requires indent_size = 4
 [*.py]
 max_line_length = 119
-indent_size = 4
+indent_size = 2

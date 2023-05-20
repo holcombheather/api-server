@@ -2,17 +2,19 @@
 
 const express = require('express');
 const cors = require('cors');
-const customerRouter = require('./routes/customer');
+const profileRouter = require('./routes/profile');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// TODO: get customerRouter working
-app.use(customerRouter);
+// TODO: get profileRouter working
+app.use(profileRouter);
 app.get('/', (req, res, next) => {
   res.status(200).send('proof of life');
 });
+
+// TODO: get ordersRouter working
 
 // TODO: bring in error handling
 

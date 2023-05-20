@@ -1,44 +1,66 @@
-# package.json Notes
+# LAB - Class 03 / Class 04
 
-## For React Applications
+## Project: Express REST API / Data Modeling
 
-To deploy your application at GitHub pages, you'll need to add a home page property to your package.json which points to the deployed base URL of your GitHub Pages site.
+### Author: Heather Holcomb | 401d53
 
-*NOTE: This will break deployments to other hosting services such as Netlify, Vercel, or AWS Amplify, so if you later wish to deploy there, remove this property completely.*
+***
 
-```json
-{
-  "homepage": "https://yourname.github.io/repository-name"
-}
-```
+### Problem Domain
 
-## Node / Express Applications
+Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a Postgres SQL Database, using the REST standard. One endpoint should include related data joined from two or more tables within your database
 
-### For Tests
+### Links and Resources
 
-Your scripts section should have the following, so that you can easily run tests locally and in your CI.
+- [GitHub Actions ci/cd](https://github.com/holcombheather/api-server/actions)
+- [back-end server url](https://api-server-module-01.onrender.com)
 
-```json
-  "scripts": {
-    "start": "node index.js",
-    "lint": "eslint **/*.js",
-    "test": "jest --verbose --coverage",
-    "test-watch": "jest --watchAll --verbose --coverage",
-    "init:config": "sequelize init:config",
-    "db:create": "sequelize db:create"
-},
-```
+### Collaborators
 
-### For NPM Modules
+- Heavily referenced live demo code from lecture 03 with Ryan Gallaway.
+- Received help with server deployment issue from TA Tony Regalado.
 
-If you are creating a module to deploy at NPM, you'll want a "bin" section that identifies the name of the global command to run and your .js file that runs when called.
+***
 
-```json
-"bin": {
-    "fetch": "index.js"
-}
-```
+### Setup
 
-Additionally, that file should have as it's first line, so that it'll run without having to type "node filename.js" every time
+#### `.env` requirements (where applicable)
 
-`#!/usr/bin/env node`
+PORT and DATABUASE_URL variable located with .env.sample
+
+#### How to initialize/run your application (where applicable)
+
+- e.g. `npm start`
+
+#### How to use your library (where applicable)
+
+`git clone https://github.com/holcombheather/api-server.git`
+`npm i`
+`nodemon`
+
+#### Features / Routes
+
+- GET : `/profile` - specific route to hit
+- GET : `/order` - specific route to hit
+
+#### Tests
+
+`npm test`
+- 404 on bad route
+- 404 on bad method
+- Correct status codes with expected data for `/profile`
+    1. confirm the database is appropriately empty
+	2. confirm that expected profile exists after a post request.
+	3. confirm that profile is updated after a put request
+	4. confirm that profile doesn't exist after delete request
+- Correct status codes with expected data for `/order`
+    1. confirm the database is appropriately empty
+	2. confirm that expected profile exists after a post request.
+	3. confirm that order is updated after a put request
+	4. confirm that order doesn't exist after delete request
+
+#### UML
+
+![UML Lab 03](assets/UML_lab03.png)
+
+****

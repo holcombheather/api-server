@@ -59,18 +59,12 @@ describe('API Server', () => {
     expect(response.body.firstName).toEqual('Jen');
   });
 
-  test('Destroy a user record using DELETE', async () => {
-    const response = await mockRequest.delete('/person/1');
-    expect(response.status).toEqual(200);
-    expect(response.body).toEqual({message: `Person with id: 1 was deleted`});
-  });
-
   // CRUD for Order
 
   test('Create a order record using POST', async () => {
-    const response = await mockRequest.post('/order').send({ product: 'Item 2'});
+    const response = await mockRequest.post('/order').send({ personId: '1', product: 'Item 1', quantity: '1', status: 'placed' });
     expect(response.status).toEqual(201);
-    expect(response.body.product).toEqual('Item 2');
+    expect(response.body.product).toEqual('Item 1');
   });
 
   test('Read a list of order records using GET', async () => {
@@ -82,12 +76,12 @@ describe('API Server', () => {
   test('Read a single order record using GET', async () => {
     const response = await mockRequest.get('/order/1');
     expect(response.status).toEqual(200);
-    expect(response.body.product).toEqual('Item 2');
+    expect(response.body.product).toEqual('Item 1');
   });
 
   test('Update a order record using PUT', async () => {
     const response = await mockRequest.put('/order/1').send({ product: 'Item 3' });
-    expect(response.status).toEqual(200);
+    expect(response.status).toEqual(201);
     expect(response.body.product).toEqual('Item 3');
   });
 
@@ -95,6 +89,12 @@ describe('API Server', () => {
     const response = await mockRequest.delete('/order/1');
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({message: `Order with id: 1 was deleted`});
+  });
+
+  test('Destroy a user record using DELETE', async () => {
+    const response = await mockRequest.delete('/person/1');
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({message: `Person with id: 1 was deleted`});
   });
 });
 

@@ -69,21 +69,26 @@ Build a REST API using Express, by creating a proper series of endpoints that pe
 	3. confirm that order is updated after a put request
 	4. confirm that order doesn't exist after delete request
 
- FAIL  __tests__/server.test.js (5.721 s)
+ PASS  __tests__/server.test.js
   API Server
-    ✓ handles the root path (16 ms)
-    ✓ 404 on a bad route (6 ms)
-    ✓ 404 on a bad method (4 ms)
-    ✓ Create a person record using POST (16 ms)
-    ✓ Read a list of person records using GET (7 ms)
-    ✓ Read a single person record using GET (5 ms)
-    ✓ Update a user record using PUT (8 ms)
-    ✕ Destroy a user record using DELETE (8 ms)
-    ✕ Create a order record using POST (5001 ms)
-    ✓ Read a list of order records using GET (13 ms)
-    ✕ Read a single order record using GET (12 ms)
-    ✕ Update a order record using PUT (11 ms)
-    ✕ Destroy a order record using DELETE (7 ms)
+    ✓ handles the root path (18 ms)
+    ✓ 404 on a bad route (8 ms)
+    ✓ 404 on a bad method (5 ms)
+    ✓ Create a person record using POST (20 ms)
+    ✓ Read a list of person records using GET (10 ms)
+    ✓ Read a single person record using GET (7 ms)
+    ✓ Update a user record using PUT (9 ms)
+    ✓ Create a order record using POST (10 ms)
+    ✓ Read a list of order records using GET (8 ms)
+    ✓ Read a single order record using GET (7 ms)
+    ✓ Update a order record using PUT (8 ms)
+    ✓ Destroy a order record using DELETE (8 ms)
+    ✓ Destroy a user record using DELETE (7 ms)
+
+ PASS  src/middleware/logger.test.js
+  logger middleware
+    ✓ Logs the method and path of the request (2 ms)
+    ✓ Calls next with no arguments (1 ms)
 
 #### UML
 

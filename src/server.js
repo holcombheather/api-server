@@ -2,14 +2,17 @@
 
 const express = require('express');
 const cors = require('cors');
-const profileRouter = require('./routes/profile');
+const personRouter = require('./routes/person');
+const ordersRouter = require('./routes/orders');
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// TODO: get profileRouter working
-app.use(profileRouter);
+// TODO: get personRouter working
+app.use(personRouter);
+app.use(ordersRouter);
 app.get('/', (req, res, next) => {
   res.status(200).send('proof of life');
 });

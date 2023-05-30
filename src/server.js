@@ -2,27 +2,31 @@
 
 const express = require('express');
 const cors = require('cors');
-const profileRouter = require('./routes/profile');
+const personRouter = require('./routes/person');
+const ordersRouter = require('./routes/orders');
+const logger = require('./middleware/logger');
+// const validator = require('./middleware/validator');
+const notFound = require('./error-handlers/404');
+const errorHandler = require('./error-handlers/500');
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use(logger);
+// app.use(validator);
 
-// TODO: get profileRouter working
-app.use(profileRouter);
+app.use(personRouter);
+app.use(ordersRouter);
 app.get('/', (req, res, next) => {
   res.status(200).send('proof of life');
 });
 
-// TODO: get ordersRouter working
-
-// TODO: bring in error handling
+app.use('*', notFound);
+app.use(errorHandler);
 
 const start = (port) => {
-  app.listen(port, () => console.log('server running on', port));
+  app.listen(port, () => console.log('Server running on', port));
 };
 
-module.exports = {
-  app,
-  start,
-};
+module.exports = { app, start };
